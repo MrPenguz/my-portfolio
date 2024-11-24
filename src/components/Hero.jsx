@@ -13,8 +13,9 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 md:p-8 ">
-                    <div className="flex justify-center  lg:justify-end ">
-                        <img className='rounded-md  h-[420px]' src={pfp} alt="" />
+                    <div className="relative flex justify-center lg:justify-end">
+                        <img className="rounded-md h-[420px]" src={pfp} alt="" />
+                        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-b from-transparent to-black rounded-md"></div>
                     </div>
                 </div>
             </div>
