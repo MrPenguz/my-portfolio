@@ -11,20 +11,21 @@ import { FaNodeJs, FaGitAlt, FaDocker } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-const floatingAnimation = {
-  initial: { y: 0 },
-  animate: {
-    y: [-10, 10],
-    transition: {
-      duration: 2,
-      ease: 'easeInOut',
-      repeat: Infinity,
-      repeatType: 'reverse',
+const TechCard = ({ icon: Icon, name, color, delay, floatDelay }) => {
+  const customFloatingAnimation = {
+    initial: { y: 0 },
+    animate: {
+      y: [-10, 10],
+      transition: {
+        duration: 2,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+        delay: floatDelay,
+      },
     },
-  },
-};
+  };
 
-const TechCard = ({ icon: Icon, name, color, delay }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -34,53 +35,16 @@ const TechCard = ({ icon: Icon, name, color, delay }) => {
       className="relative group h-full"
     >
       <motion.div
-        variants={floatingAnimation}
+        variants={customFloatingAnimation}
         initial="initial"
         animate="animate"
-        style={{
-          height: '100%',
-          borderRadius: '1rem',
-          border: '1px solid rgba(0, 255, 157, 0.2)',
-          backgroundColor: 'rgba(26, 26, 26, 0.5)',
-          padding: '2rem',
-          backdropFilter: 'blur(8px)',
-          transition: 'all 0.3s',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.1)',
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.borderColor = '#00ff9d';
-          e.target.style.boxShadow = '0 8px 12px -1px rgba(0, 255, 157, 0.2)';
-          e.target.style.transform = 'translateY(-5px)';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.borderColor = 'rgba(0, 255, 157, 0.2)';
-          e.target.style.boxShadow = '0 4px 6px -1px rgba(0, 255, 157, 0.1)';
-          e.target.style.transform = 'translateY(0)';
-        }}
+        className="h-full rounded-xl border border-[rgba(0,255,157,0.2)] bg-[rgba(26,26,26,0.5)] p-8 backdrop-blur-sm transition-all duration-300 flex flex-col items-center justify-center shadow-[0_4px_6px_-1px_rgba(0,255,157,0.1)] hover:border-[#00ff9d] hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.2)] hover:-translate-y-1"
       >
         <Icon
-          style={{
-            fontSize: '4rem',
-            color: color,
-            transition: 'all 0.3s',
-            transform: 'scale(1)',
-          }}
-          className="group-hover:scale-110 group-hover:rotate-[360deg]"
+          style={{ color }}
+          className="text-6xl transition-all duration-300 group-hover:scale-110 "
         />
-        <h3
-          style={{
-            fontSize: '1.25rem',
-            fontWeight: '600',
-            color: '#ffffff',
-            marginTop: '1rem',
-          }}
-        >
-          {name}
-        </h3>
+        <h3 className="text-xl font-semibold text-white mt-4">{name}</h3>
       </motion.div>
     </motion.div>
   );
@@ -91,6 +55,7 @@ TechCard.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   delay: PropTypes.number.isRequired,
+  floatDelay: PropTypes.number.isRequired,
 };
 
 const Technologies = () => {
@@ -98,52 +63,52 @@ const Technologies = () => {
     {
       icon: RiReactjsLine,
       name: 'React',
-      color: '#61DAFB', // React blue
+      color: '#61DAFB',
     },
     {
       icon: TbBrandNextjs,
       name: 'Next.js',
-      color: '#ffffff', // Next.js white
+      color: '#ffffff',
     },
     {
       icon: SiMongodb,
       name: 'MongoDB',
-      color: '#47A248', // MongoDB green
+      color: '#47A248',
     },
     {
       icon: BiLogoPostgresql,
       name: 'PostgreSQL',
-      color: '#336791', // PostgreSQL blue
+      color: '#336791',
     },
     {
       icon: FaNodeJs,
       name: 'Node.js',
-      color: '#339933', // Node.js green
+      color: '#339933',
     },
     {
       icon: SiTailwindcss,
       name: 'Tailwind',
-      color: '#38B2AC', // Tailwind teal
+      color: '#38B2AC',
     },
     {
       icon: SiTypescript,
       name: 'TypeScript',
-      color: '#3178C6', // TypeScript blue
+      color: '#3178C6',
     },
     {
       icon: SiRedux,
       name: 'Redux',
-      color: '#764ABC', // Redux purple
+      color: '#764ABC',
     },
     {
       icon: FaGitAlt,
       name: 'Git',
-      color: '#F05032', // Git orange
+      color: '#F05032',
     },
     {
       icon: FaDocker,
       name: 'Docker',
-      color: '#2496ED', // Docker blue
+      color: '#2496ED',
     },
   ];
 
@@ -160,12 +125,7 @@ const Technologies = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(circle at center, rgba(0, 255, 157, 0.15) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,157,0.15)_0%,transparent_70%)] blur-[60px]"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -183,22 +143,8 @@ const Technologies = () => {
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse"></div>
             <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse delay-700"></div>
           </h2>
-          <div
-            style={{
-              width: '6rem',
-              height: '0.25rem',
-              margin: '1.5rem auto',
-              background: 'linear-gradient(to right, #00ff9d, #00cc7d)',
-            }}
-          ></div>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              color: '#999999',
-              maxWidth: '42rem',
-              margin: '1.5rem auto',
-            }}
-          >
+          <div className="w-24 h-1 mx-auto my-6 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d]"></div>
+          <p className="text-lg text-[#999999] max-w-[42rem] mx-auto my-6">
             Proficient in modern web technologies and frameworks.
           </p>
         </motion.div>
@@ -210,7 +156,8 @@ const Technologies = () => {
               icon={tech.icon}
               name={tech.name}
               color={tech.color}
-              delay={index * 0.1}
+              delay={index * 0.1} // fade-in delay
+              floatDelay={(index % 5) * 0.2} // floating motion offset
             />
           ))}
         </div>

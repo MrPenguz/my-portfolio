@@ -16,37 +16,12 @@ const ContactInfo = ({ icon: Icon, text, href }) => (
     target={href.startsWith('http') ? '_blank' : undefined}
     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
     whileHover={{ scale: 1.05 }}
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '1rem',
-      padding: '1rem',
-      backgroundColor: '#1a1a1a',
-      borderRadius: '0.5rem',
-      boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.1)',
-      transition: 'all 0.3s',
-      border: '1px solid #1a1a1a',
-      textDecoration: 'none',
-    }}
-    onMouseEnter={(e) => {
-      e.target.style.boxShadow = '0 8px 12px -1px rgba(0, 255, 157, 0.2)';
-      e.target.style.borderColor = '#00ff9d';
-    }}
-    onMouseLeave={(e) => {
-      e.target.style.boxShadow = '0 4px 6px -1px rgba(0, 255, 157, 0.1)';
-      e.target.style.borderColor = '#1a1a1a';
-    }}
+    className="flex items-center gap-4 p-4 bg-[#1a1a1a] rounded-lg shadow-[0_4px_6px_-1px_rgba(0,255,157,0.1)] border border-[#1a1a1a] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.2)] hover:border-[#00ff9d] no-underline"
   >
-    <div
-      style={{
-        background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-        padding: '0.75rem',
-        borderRadius: '9999px',
-      }}
-    >
-      <Icon style={{ fontSize: '1.5rem', color: '#000000' }} />
+    <div className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full">
+      <Icon className="text-xl text-black" />
     </div>
-    <span style={{ color: '#ffffff' }}>{text}</span>
+    <span className="text-white">{text}</span>
   </motion.a>
 );
 
@@ -75,12 +50,7 @@ const Contact = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(circle at center, rgba(0, 255, 157, 0.15) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,157,0.15)_0%,transparent_70%)] blur-[60px]"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -98,22 +68,8 @@ const Contact = () => {
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse"></div>
             <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse delay-700"></div>
           </h2>
-          <div
-            style={{
-              width: '6rem',
-              height: '0.25rem',
-              margin: '1.5rem auto',
-              background: 'linear-gradient(to right, #00ff9d, #00cc7d)',
-            }}
-          ></div>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              color: '#999999',
-              maxWidth: '42rem',
-              margin: '1.5rem auto',
-            }}
-          >
+          <div className="w-24 h-1 mx-auto my-6 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d]"></div>
+          <p className="text-lg text-[#999999] max-w-[42rem] mx-auto my-6">
             Feel free to reach out for collaborations or just a friendly hello
           </p>
         </motion.div>
@@ -126,24 +82,11 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.5rem',
-              }}
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div>
                 <label
                   htmlFor="name"
-                  style={{
-                    display: 'block',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                    color: '#ffffff',
-                    marginBottom: '0.5rem',
-                  }}
+                  className="block text-sm font-medium text-white mb-2"
                 >
                   Name
                 </label>
@@ -152,38 +95,14 @@ const Contact = () => {
                   id="name"
                   name="name"
                   required
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '0.5rem',
-                    backgroundColor: '#1a1a1a',
-                    border: '1px solid #333333',
-                    color: '#ffffff',
-                    outline: 'none',
-                    transition: 'all 0.3s',
-                  }}
+                  className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333333] text-white outline-none transition-all duration-300 focus:border-[#00ff9d] focus:ring-2 focus:ring-[#00ff9d]/20"
                   placeholder="Your Name"
-                  onFocus={(e) => {
-                    e.target.style.borderColor = '#00ff9d';
-                    e.target.style.boxShadow =
-                      '0 0 0 2px rgba(0, 255, 157, 0.2)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = '#333333';
-                    e.target.style.boxShadow = 'none';
-                  }}
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  style={{
-                    display: 'block',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                    color: '#ffffff',
-                    marginBottom: '0.5rem',
-                  }}
+                  className="block text-sm font-medium text-white mb-2"
                 >
                   Email
                 </label>
@@ -192,38 +111,14 @@ const Contact = () => {
                   id="email"
                   name="email"
                   required
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '0.5rem',
-                    backgroundColor: '#1a1a1a',
-                    border: '1px solid #333333',
-                    color: '#ffffff',
-                    outline: 'none',
-                    transition: 'all 0.3s',
-                  }}
+                  className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333333] text-white outline-none transition-all duration-300 focus:border-[#00ff9d] focus:ring-2 focus:ring-[#00ff9d]/20"
                   placeholder="your@email.com"
-                  onFocus={(e) => {
-                    e.target.style.borderColor = '#00ff9d';
-                    e.target.style.boxShadow =
-                      '0 0 0 2px rgba(0, 255, 157, 0.2)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = '#333333';
-                    e.target.style.boxShadow = 'none';
-                  }}
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  style={{
-                    display: 'block',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                    color: '#ffffff',
-                    marginBottom: '0.5rem',
-                  }}
+                  className="block text-sm font-medium text-white mb-2"
                 >
                   Message
                 </label>
@@ -232,53 +127,15 @@ const Contact = () => {
                   name="message"
                   required
                   rows="4"
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '0.5rem',
-                    backgroundColor: '#1a1a1a',
-                    border: '1px solid #333333',
-                    color: '#ffffff',
-                    outline: 'none',
-                    transition: 'all 0.3s',
-                    resize: 'vertical',
-                  }}
+                  className="w-full px-4 py-3 rounded-lg bg-[#1a1a1a] border border-[#333333] text-white outline-none transition-all duration-300 focus:border-[#00ff9d] focus:ring-2 focus:ring-[#00ff9d]/20 resize-y"
                   placeholder="Your message..."
-                  onFocus={(e) => {
-                    e.target.style.borderColor = '#00ff9d';
-                    e.target.style.boxShadow =
-                      '0 0 0 2px rgba(0, 255, 157, 0.2)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = '#333333';
-                    e.target.style.boxShadow = 'none';
-                  }}
                 ></textarea>
               </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                style={{
-                  width: '100%',
-                  background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-                  color: '#000000',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  fontWeight: '500',
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.2)',
-                  transition: 'all 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.boxShadow =
-                    '0 8px 12px -1px rgba(0, 255, 157, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.boxShadow =
-                    '0 4px 6px -1px rgba(0, 255, 157, 0.2)';
-                }}
+                className="w-full bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-4 py-3 rounded-lg font-medium border-none cursor-pointer shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
               >
                 Send Message
               </motion.button>
@@ -312,7 +169,7 @@ const Contact = () => {
             />
 
             <div className="pt-8">
-              <h3 className="text-lg font-semibold text-light-DEFAULT mb-4">
+              <h3 className="text-lg font-semibold text-white mb-4">
                 Follow Me
               </h3>
               <div className="flex gap-4">
@@ -321,72 +178,27 @@ const Contact = () => {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-                    padding: '0.75rem',
-                    borderRadius: '9999px',
-                    color: '#000000',
-                    boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.2)',
-                    transition: 'all 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.boxShadow =
-                      '0 8px 12px -1px rgba(0, 255, 157, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.boxShadow =
-                      '0 4px 6px -1px rgba(0, 255, 157, 0.2)';
-                  }}
+                  className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full text-black shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
                 >
-                  <FaLinkedin style={{ fontSize: '1.25rem' }} />
+                  <FaLinkedin className="text-xl" />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-                    padding: '0.75rem',
-                    borderRadius: '9999px',
-                    color: '#000000',
-                    boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.2)',
-                    transition: 'all 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.boxShadow =
-                      '0 8px 12px -1px rgba(0, 255, 157, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.boxShadow =
-                      '0 4px 6px -1px rgba(0, 255, 157, 0.2)';
-                  }}
+                  className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full text-black shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
                 >
-                  <FaGithub style={{ fontSize: '1.25rem' }} />
+                  <FaGithub className="text-xl" />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-                    padding: '0.75rem',
-                    borderRadius: '9999px',
-                    color: '#000000',
-                    boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.2)',
-                    transition: 'all 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.boxShadow =
-                      '0 8px 12px -1px rgba(0, 255, 157, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.boxShadow =
-                      '0 4px 6px -1px rgba(0, 255, 157, 0.2)';
-                  }}
+                  className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full text-black shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
                 >
-                  <FaTwitter style={{ fontSize: '1.25rem' }} />
+                  <FaTwitter className="text-xl" />
                 </motion.a>
               </div>
             </div>

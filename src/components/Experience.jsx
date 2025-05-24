@@ -13,69 +13,20 @@ const ExperienceCard = ({ experience, index }) => {
       className="relative"
     >
       <div className="relative">
-        <div
-          style={{
-            position: 'absolute',
-            left: '2rem',
-            top: 0,
-            bottom: 0,
-            width: '2px',
-            background: 'linear-gradient(to bottom, #00ff9d, #00cc7d)',
-          }}
-        ></div>
+        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#00ff9d] to-[#00cc7d]"></div>
 
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
           viewport={{ once: true }}
-          style={{
-            position: 'absolute',
-            left: '1.5rem',
-            top: '2rem',
-            width: '1.25rem',
-            height: '1.25rem',
-            borderRadius: '50%',
-            background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-            transform: 'translateX(-50%)',
-            boxShadow: '0 0 10px rgba(0, 255, 157, 0.5)',
-          }}
+          className="absolute left-6 top-8 w-5 h-5 rounded-full bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] -translate-x-1/2 shadow-[0_0_10px_rgba(0,255,157,0.5)]"
         ></motion.div>
 
-        <div style={{ marginLeft: '4rem' }} className="relative group">
-          <div
-            style={{
-              backgroundColor: 'rgba(26, 26, 26, 0.5)',
-              backdropFilter: 'blur(8px)',
-              padding: '1.5rem',
-              borderRadius: '0.75rem',
-              border: '2px solid #1a1a1a',
-              transition: 'all 0.3s',
-              boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.1)',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.borderColor = '#00ff9d';
-              e.target.style.boxShadow =
-                '0 8px 12px -1px rgba(0, 255, 157, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.borderColor = '#1a1a1a';
-              e.target.style.boxShadow =
-                '0 4px 6px -1px rgba(0, 255, 157, 0.1)';
-            }}
-          >
-            <div
-              style={{
-                position: 'absolute',
-                right: '-0.75rem',
-                top: '-0.75rem',
-                background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.3)',
-              }}
-            >
-              <BsBriefcase style={{ color: '#000000', fontSize: '1.25rem' }} />
+        <div className="ml-16 relative group">
+          <div className="bg-[rgba(26,26,26,0.5)] backdrop-blur-sm p-6 rounded-lg border-2 border-[#1a1a1a] transition-all duration-300  hover:border-[#00ff9d] ">
+            <div className="absolute -right-3 -top-3 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-lg shadow-[0_4px_6px_-1px_rgba(0,255,157,0.3)]">
+              <BsBriefcase className="text-black text-xl" />
             </div>
 
             <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
@@ -84,7 +35,7 @@ const ExperienceCard = ({ experience, index }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
                 viewport={{ once: true }}
-                style={{ color: '#00ff9d', fontWeight: '600' }}
+                className="text-[#00ff9d] font-semibold"
               >
                 {experience.year}
               </motion.span>
@@ -93,11 +44,7 @@ const ExperienceCard = ({ experience, index }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
                 viewport={{ once: true }}
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '700',
-                  color: '#ffffff',
-                }}
+                className="text-xl font-bold text-white"
               >
                 {experience.role}
               </motion.h3>
@@ -106,7 +53,7 @@ const ExperienceCard = ({ experience, index }) => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.2 + 0.5 }}
                 viewport={{ once: true }}
-                style={{ color: '#00cc7d' }}
+                className="text-[#00cc7d]"
               >
                 {experience.company}
               </motion.span>
@@ -117,7 +64,7 @@ const ExperienceCard = ({ experience, index }) => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: index * 0.2 + 0.6 }}
               viewport={{ once: true }}
-              style={{ color: '#999999', marginBottom: '1.5rem' }}
+              className="text-[#999999] mb-6"
             >
               {experience.description}
             </motion.p>
@@ -133,21 +80,7 @@ const ExperienceCard = ({ experience, index }) => {
                     delay: index * 0.2 + 0.7 + techIndex * 0.1,
                   }}
                   viewport={{ once: true }}
-                  style={{
-                    padding: '0.5rem 0.75rem',
-                    backgroundColor: 'rgba(0, 255, 157, 0.1)',
-                    color: '#00ff9d',
-                    borderRadius: '9999px',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                    transition: 'all 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = 'rgba(0, 255, 157, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'rgba(0, 255, 157, 0.1)';
-                  }}
+                  className="px-3 py-2 bg-[rgba(0,255,157,0.1)] text-[#00ff9d] rounded-full text-sm font-medium transition-all duration-300 hover:bg-[rgba(0,255,157,0.2)]"
                 >
                   {technology}
                 </motion.span>
@@ -185,12 +118,7 @@ const Experience = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(circle at center, rgba(0, 255, 157, 0.15) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,157,0.15)_0%,transparent_70%)] blur-[60px]"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -208,22 +136,8 @@ const Experience = () => {
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse"></div>
             <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse delay-700"></div>
           </h2>
-          <div
-            style={{
-              width: '6rem',
-              height: '0.25rem',
-              margin: '1.5rem auto',
-              background: 'linear-gradient(to right, #00ff9d, #00cc7d)',
-            }}
-          ></div>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              color: '#999999',
-              maxWidth: '42rem',
-              margin: '1.5rem auto',
-            }}
-          >
+          <div className="w-24 h-1 mx-auto my-6 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d]"></div>
+          <p className="text-lg text-[#999999] max-w-[42rem] mx-auto my-6">
             A timeline of my professional experience and growth in the tech
             industry.
           </p>

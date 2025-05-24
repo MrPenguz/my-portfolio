@@ -1,6 +1,6 @@
 import { PROJECTS } from '../constants';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { Github, ExternalLink } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const ProjectCard = ({ project, index }) => {
@@ -10,141 +10,61 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      style={{
-        backgroundColor: '#1a1a1a',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-        boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.1)',
-        transition: 'all 0.3s',
-        border: '1px solid #1a1a1a',
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.boxShadow = '0 8px 12px -1px rgba(0, 255, 157, 0.2)';
-        e.target.style.borderColor = '#00ff9d';
-        e.target.style.transform = 'translateY(-5px)';
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.boxShadow = '0 4px 6px -1px rgba(0, 255, 157, 0.1)';
-        e.target.style.borderColor = '#1a1a1a';
-        e.target.style.transform = 'translateY(0)';
-      }}
+      className="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgba(0,255,157,0.1)] border border-[#1a1a1a] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.2)] hover:border-[#00ff9d] hover:-translate-y-1 flex flex-col justify-between h-full"
     >
-      <div style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="relative h-64 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
-          style={{
-            width: '100%',
-            height: '16rem',
-            objectFit: 'cover',
-          }}
+          className="w-full h-full object-cover"
         />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '1.5rem',
-          }}
-        >
-          <h3
-            style={{
-              fontSize: '1.5rem',
-              fontWeight: '700',
-              color: '#ffffff',
-              marginBottom: '0.5rem',
-            }}
-          >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+          <h3 className="text-2xl font-bold text-white mb-2">
             {project.title}
           </h3>
         </div>
       </div>
-      <div style={{ padding: '1.5rem' }}>
-        <p style={{ color: '#999999', marginBottom: '1.5rem' }}>
-          {project.description}
-        </p>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.5rem',
-            marginBottom: '1.5rem',
-          }}
-        >
-          {project.technologies.map((tech, techIndex) => (
+
+      <div className="p-6 flex flex-col justify-between flex-1">
+        <p className="text-[#999999] mb-6">{project.description}</p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.technologies.map((tech, i) => (
             <span
-              key={techIndex}
-              style={{
-                padding: '0.5rem 0.75rem',
-                backgroundColor: 'rgba(0, 255, 157, 0.1)',
-                color: '#00ff9d',
-                borderRadius: '9999px',
-                fontSize: '0.875rem',
-                fontWeight: '500',
-                transition: 'all 0.3s',
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'rgba(0, 255, 157, 0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'rgba(0, 255, 157, 0.1)';
-              }}
+              key={i}
+              className="px-3 py-2 bg-[rgba(0,255,157,0.1)] text-[#00ff9d] rounded-full text-sm font-medium hover:bg-[rgba(0,255,157,0.2)]"
             >
               {tech}
             </span>
           ))}
         </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+
+        <div className="flex gap-4 mt-auto">
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.5rem',
-              background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-              color: '#000000',
-              padding: '0.75rem',
-              borderRadius: '0.5rem',
-              fontWeight: '500',
-              textDecoration: 'none',
-              boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.2)',
-            }}
+            className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-4 py-3 rounded-lg font-medium no-underline shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)]"
           >
-            <FaGithub style={{ fontSize: '1.25rem' }} />
+            <span className=" p-1 rounded-full">
+              <Github className="text-black w-5 h-5" />
+            </span>
             <span>View Code</span>
           </motion.a>
+
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.5rem',
-              background: 'linear-gradient(45deg, #00ff9d, #00cc7d)',
-              color: '#000000',
-              padding: '0.75rem',
-              borderRadius: '0.5rem',
-              fontWeight: '500',
-              textDecoration: 'none',
-              boxShadow: '0 4px 6px -1px rgba(0, 255, 157, 0.2)',
-            }}
+            className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-4 py-3 rounded-lg font-medium no-underline shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)]"
           >
-            <FaExternalLinkAlt style={{ fontSize: '1.25rem' }} />
+            <span className=" p-1 rounded-full">
+              <ExternalLink className="text-black w-5 h-5" />
+            </span>
             <span>Live Demo</span>
           </motion.a>
         </div>
@@ -168,7 +88,6 @@ ProjectCard.propTypes = {
 const Projects = () => {
   return (
     <section id="projects" className="relative py-20">
-      {/* Animated Background Effect */}
       <motion.div
         animate={{
           opacity: [0.3, 0.5, 0.3],
@@ -179,12 +98,7 @@ const Projects = () => {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(circle at center, rgba(0, 255, 157, 0.15) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,157,0.15)_0%,transparent_70%)] blur-[60px]"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -202,22 +116,8 @@ const Projects = () => {
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse"></div>
             <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse delay-700"></div>
           </h2>
-          <div
-            style={{
-              width: '6rem',
-              height: '0.25rem',
-              margin: '1.5rem auto',
-              background: 'linear-gradient(to right, #00ff9d, #00cc7d)',
-            }}
-          ></div>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              color: '#999999',
-              maxWidth: '42rem',
-              margin: '1.5rem auto',
-            }}
-          >
+          <div className="w-24 h-1 mx-auto my-6 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d]"></div>
+          <p className="text-lg text-[#999999] max-w-[42rem] mx-auto my-6">
             Here are some of my recent projects that showcase my skills and
             experience in web development.
           </p>
@@ -225,7 +125,9 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <div key={index} className="h-full">
+              <ProjectCard project={project} index={index} />
+            </div>
           ))}
         </div>
       </div>
