@@ -78,7 +78,7 @@ const Navbar = () => {
                 className="relative px-3 py-2 text-sm font-medium cursor-pointer overflow-hidden"
               >
                 <span
-                  className={`relative z-20 transition-colors duration-300 ${
+                  className={`relative z-20 transition-colors hover:text-[#229367] duration-300 ${
                     active === section ? 'text-black' : 'text-white'
                   }`}
                 >
@@ -106,7 +106,7 @@ const Navbar = () => {
           {/* Right - Contact & Socials + Hamburger */}
           <div className="flex items-center space-x-4">
             <motion.a
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.05 }}
               href="#contact"
               className="hidden md:inline bg-[#00ff9d] text-black text-sm font-medium px-4 py-2 rounded-md transition-colors hover:bg-[#00cc7d]"
             >
@@ -155,7 +155,7 @@ const Navbar = () => {
             exit="exit"
             variants={drawerVariants}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-[#0a0a0a] z-50 shadow-lg flex flex-col"
+            className="fixed top-0 right-0 bottom-0 max-w-xs bg-[#0a0a0a] z-50 shadow-lg flex flex-col"
             style={{ height: '100vh' }}
           >
             {/* Close button inside drawer */}
@@ -174,7 +174,7 @@ const Navbar = () => {
                   key={section}
                   href={`#${section}`}
                   onClick={(e) => handleClick(e, section)}
-                  className={`text-white text-2xl font-medium cursor-pointer ${
+                  className={`text-white text-2xl font-medium cursor-pointer hover:text-[#00ff9d] ${
                     active === section ? 'text-[#00ff9d]' : ''
                   }`}
                 >

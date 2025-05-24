@@ -14,10 +14,29 @@ const Hero = () => {
     }),
   };
 
+  const bounceVariants = {
+    bounceY: {
+      y: [0, -15, 0],
+      transition: {
+        duration: 1.5,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+    bounceRadius: {
+      borderRadius: ['1rem', '2rem', '1rem'],
+      transition: {
+        duration: 1.5,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex md:mt-12 sm:mt-16 mt-16 items-center justify-center relative"
     >
       {/* Animated Background Effect */}
       <motion.div
@@ -85,7 +104,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Text Content */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <motion.h1
               custom={0}
               variants={textVariants}
@@ -138,6 +157,29 @@ const Hero = () => {
             >
               View Projects
             </a>
+          </motion.div>
+
+          {/* Bouncing Chevron */}
+          <motion.div
+            className="mt-12 mx-auto w-12 h-12 bg-[#00ff9d] flex items-center justify-center cursor-pointer"
+            animate={['bounceY', 'bounceRadius']}
+            variants={bounceVariants}
+            initial="bounceY"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 text-black"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
           </motion.div>
         </div>
       </div>

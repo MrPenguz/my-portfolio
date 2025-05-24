@@ -1,12 +1,12 @@
 import { CONTACT } from '../constants';
 import { motion } from 'framer-motion';
 import {
-  FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
   FaLinkedin,
   FaGithub,
   FaTwitter,
+  FaTelegram,
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
@@ -151,11 +151,9 @@ const Contact = () => {
             className="space-y-6"
           >
             <ContactInfo
-              icon={FaMapMarkerAlt}
-              text={CONTACT.address}
-              href={`https://maps.google.com/?q=${encodeURIComponent(
-                CONTACT.address,
-              )}`}
+              icon={FaTelegram}
+              text={CONTACT.telegram}
+              href={`https://t.me/${CONTACT.telegram}`}
             />
             <ContactInfo
               icon={FaPhone}

@@ -9,7 +9,7 @@ import Contact from './components/Contact';
 function App() {
   return (
     <main
-      className="antialiased"
+      className="relative antialiased w-full overflow-hidden"
       style={{ color: '#ffffff', backgroundColor: '#0a0a0a' }}
     >
       <div
@@ -17,6 +17,7 @@ function App() {
         style={{
           background:
             'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(0, 255, 157, 0.3), rgba(0, 0, 0, 1))',
+          contain: 'paint',
         }}
       ></div>
       <div
@@ -25,10 +26,11 @@ function App() {
           backgroundImage:
             'linear-gradient(to right, rgba(0, 255, 157, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 157, 0.1) 1px, transparent 1px)',
           backgroundSize: '14px 24px',
+          contain: 'paint',
         }}
       ></div>
 
-      <div className="mx-auto">
+      <div className="relative w-full">
         <Navbar />
         <Hero />
         <About />

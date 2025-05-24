@@ -13,14 +13,12 @@ const ExperienceCard = ({ experience, index }) => {
       className="relative"
     >
       <div className="relative">
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#00ff9d] to-[#00cc7d]"></div>
-
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
           viewport={{ once: true }}
-          className="absolute left-6 top-8 w-5 h-5 rounded-full bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] -translate-x-1/2 shadow-[0_0_10px_rgba(0,255,157,0.5)]"
+          className="absolute left-6 top-8 w-5 h-5 rounded-full bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] -translate-x-1/2 shadow-[0_0_10px_rgba(0,255,157,0.5)] z-10"
         ></motion.div>
 
         <div className="ml-16 relative group">
@@ -143,7 +141,16 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="space-y-12 relative">
+          {/* Continuous timeline line */}
+          <div
+            className="absolute left-[1.95rem] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#00ff9d] via-[#00cc7d] to-[#00ff9d]"
+            style={{
+              background:
+                'linear-gradient(180deg, #00ff9d 0%, #00cc7d 50%, #00ff9d 100%)',
+            }}
+          ></div>
+
           {EXPERIENCES.map((experience, index) => (
             <ExperienceCard key={index} experience={experience} index={index} />
           ))}

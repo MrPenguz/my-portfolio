@@ -2,8 +2,10 @@ import aboutImg from '../assets/about.jpg';
 import { ABOUT_TEXT } from '../constants/index.js';
 import { motion } from 'framer-motion';
 import { Code, PenTool, Smartphone, TrendingUp } from 'lucide-react';
-
+import CountUp from 'react-countup';
+import { useState } from 'react';
 const About = () => {
+  const [viewed, setViewed] = useState(false);
   const services = [
     { label: 'Web Development', icon: <Code size={20} /> },
     { label: 'UI/UX Design', icon: <PenTool size={20} /> },
@@ -58,20 +60,6 @@ const About = () => {
                 alt="About Me"
                 className="relative w-full rounded-xl border-2 border-[rgba(0,255,157,0.2)] shadow-[0_0_30px_rgba(0,255,157,0.2)]"
               />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="absolute -bottom-6 -right-6 bg-[#1a1a1a] p-4 rounded-lg border border-[rgba(0,255,157,0.2)] shadow-[0_0_20px_rgba(0,255,157,0.1)]"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-[#00ff9d] rounded-full animate-pulse"></div>
-                  <span className="text-white text-sm font-medium">
-                    5+ Years Experience
-                  </span>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -82,23 +70,33 @@ const About = () => {
             viewport={{ once: true }}
             className="w-full lg:w-1/2 space-y-6"
           >
+            <h2 className="text-4xl font-bold text-[#00ff9d]">Who Am I?</h2>
             <p className="text-[#999999] text-lg leading-relaxed">
               {ABOUT_TEXT}
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[rgba(0,255,157,0.2)]">
-                <h3 className="text-2xl font-bold text-[#00ff9d]">50+</h3>
+            <motion.div
+              onViewportEnter={() => setViewed(true)}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-4"
+            >
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[rgba(0,255,157,0.2)] hover:scale-105 hover:shadow-[0_0_15px_#00ff9d33] transition-transform duration-300 ease-in-out cursor-pointer">
+                <h3 className="text-2xl font-bold text-[#00ff9d]">
+                  {viewed ? <CountUp end={50} duration={2} /> : 0}+
+                </h3>
                 <p className="text-[#999999]">Projects Completed</p>
               </div>
-              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[rgba(0,255,157,0.2)]">
-                <h3 className="text-2xl font-bold text-[#00ff9d]">100%</h3>
+
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[rgba(0,255,157,0.2)] hover:scale-105 hover:shadow-[0_0_15px_#00ff9d33] transition-transform duration-300 ease-in-out cursor-pointer">
+                <h3 className="text-2xl font-bold text-[#00ff9d]">
+                  {viewed ? <CountUp end={100} duration={2} suffix="%" /> : 0}
+                </h3>
                 <p className="text-[#999999]">Client Satisfaction</p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Services with Lucide Icons */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-2 gap-4 mt-8">
               {services.map((item, index) => (
                 <div key={index} className="flex items-center gap-4">
                   <div className="p-3 rounded-full border-2 border-[#00ff9d] text-white bg-[#111]">
@@ -114,7 +112,7 @@ const About = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-8 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:opacity-90"
+              className="mt-8 bg-gradient-to-r sm:w-auto w-full from-[#00ff9d] to-[#00cc7d] text-black px-8 py-3   rounded-lg font-medium transition-all duration-300 hover:opacity-90"
             >
               Download Resume
             </motion.button>

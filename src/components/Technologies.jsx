@@ -12,20 +12,6 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 const TechCard = ({ icon: Icon, name, color, delay, floatDelay }) => {
-  const customFloatingAnimation = {
-    initial: { y: 0 },
-    animate: {
-      y: [-10, 10],
-      transition: {
-        duration: 2,
-        ease: 'easeInOut',
-        repeat: Infinity,
-        repeatType: 'reverse',
-        delay: floatDelay,
-      },
-    },
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,9 +21,17 @@ const TechCard = ({ icon: Icon, name, color, delay, floatDelay }) => {
       className="relative group h-full"
     >
       <motion.div
-        variants={customFloatingAnimation}
-        initial="initial"
-        animate="animate"
+        animate={{
+          y: [0, -10, 0, 10, 0], // smooth up and down
+        }}
+        transition={{
+          duration: 4, // longer duration for smoothness
+          ease: 'easeInOut',
+          repeat: Infinity,
+          repeatType: 'loop',
+          delay: floatDelay, // stagger start times
+          times: [0, 0.25, 0.5, 0.75, 1], // keyframe timing
+        }}
         className="h-full rounded-xl border border-[rgba(0,255,157,0.2)] bg-[rgba(26,26,26,0.5)] p-8 backdrop-blur-sm transition-all duration-300 flex flex-col items-center justify-center shadow-[0_4px_6px_-1px_rgba(0,255,157,0.1)] hover:border-[#00ff9d] hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.2)] hover:-translate-y-1"
       >
         <Icon
@@ -157,7 +151,7 @@ const Technologies = () => {
               name={tech.name}
               color={tech.color}
               delay={index * 0.1} // fade-in delay
-              floatDelay={(index % 5) * 0.2} // floating motion offset
+              floatDelay={index * 0.3}
             />
           ))}
         </div>
