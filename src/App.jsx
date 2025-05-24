@@ -1,18 +1,34 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About'
+import About from './components/About';
 import Technologies from './components/Technologies';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-function App() {
-  const [count, setCount] = useState(0);
 
+function App() {
   return (
-    <div className=' text-neutral-300 antialiased selection:bg-cyan-700 selection:text-white'>
-      {/* <div className="flixed top-0 -z-10 h-full w-full"></div> */}
-      <div className=" container mx-auto px-8">
+    <main
+      className="antialiased"
+      style={{ color: '#ffffff', backgroundColor: '#0a0a0a' }}
+    >
+      <div
+        className="fixed top-0 -z-10 h-full w-full"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(0, 255, 157, 0.3), rgba(0, 0, 0, 1))',
+        }}
+      ></div>
+      <div
+        className="fixed inset-0 -z-5"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(0, 255, 157, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 157, 0.1) 1px, transparent 1px)',
+          backgroundSize: '14px 24px',
+        }}
+      ></div>
+
+      <div className="mx-auto">
         <Navbar />
         <Hero />
         <About />
@@ -21,9 +37,8 @@ function App() {
         <Projects />
         <Contact />
       </div>
-
-    </div>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;

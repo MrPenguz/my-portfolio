@@ -1,35 +1,145 @@
-import React from 'react'
-import { HERO_CONTENT } from '../constants/index'
-import pfp from "../assets/Pengu.jpg"
-import { motion } from 'framer-motion'
-const container = (delay) => ({
-    hidden: { x: -100, opacity: 0 },
-    visible: {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 0.5, delay: delay }
-    },
-});
-const Hero = () => {
-    return (
-        <div className='border-b  border-black mb-36 '>
-            <div className="flex flex-wrap ">
-                <div className="w-full lg:w-1/2">
-                    <div className="flex flex-col items-center lg:items-start">
-                        <motion.h1 variants={container(0)} initial="hidden" animate="visible" className='pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl'>Moe Masri</motion.h1>
-                        <motion.span variants={container(0.5)} initial="hidden" animate="visible" className='bg-gradient-to-r from-green-300 via-slate-400 to-emerald-500 bg-clip-text text-3xl tracking-tight text-transparent'>Full Stack Developer</motion.span>
-                        <motion.p variants={container(1)} initial="hidden" animate="visible" className='my-2 max-w-xl  text-lg py-6 font-light tracking-tighter lg:text-start text-center'>{HERO_CONTENT}</motion.p>
-                    </div>
-                </div>
-                <div className="w-full lg:w-1/2 md:p-8 ">
-                    <div className="relative flex justify-center lg:justify-end">
-                        <motion.img initial={{ x: 100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 1.2 }} className="rounded-md h-[420px]" src={pfp} alt="" />
-                        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-b from-transparent to-black rounded-md"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+import { motion } from 'framer-motion';
+import pfp from '../assets/Pengu.jpg';
 
-export default Hero
+const Hero = () => {
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+      },
+    }),
+  };
+
+  return (
+    <section className="min-h-screen flex items-center justify-center relative">
+      {/* Animated Background Effect */}
+      <motion.div
+        animate={{
+          opacity: [0.3, 0.5, 0.3],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(circle at center, rgba(0, 255, 157, 0.15) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+      />
+
+      {/* Additional Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] rounded-full opacity-20 blur-xl animate-pulse delay-700"></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="flex flex-col items-center text-center space-y-12">
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative"
+          >
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] blur-md opacity-70 animate-pulse" />
+              <div className="relative rounded-full overflow-hidden border-4 border-[#00ff9d] w-full h-full">
+                <img
+                  src={pfp}
+                  alt="Moe Masri"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="absolute -bottom-4 right-0 bg-[#1a1a1a] p-3 rounded-xl shadow-xl border border-[#00ff9d33]"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-[#00ff9d] rounded-full animate-pulse" />
+                <span className="text-sm text-white font-medium">
+                  Available for work
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Text Content */}
+          <div className="space-y-6">
+            <motion.h1
+              custom={0}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-4xl md:text-6xl font-bold text-white"
+            >
+              Hi, I&apos;m <span className="text-[#00ff9d]">Moe Masri</span>
+            </motion.h1>
+
+            <motion.div
+              custom={1}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-xl md:text-2xl font-light text-[#cccccc]"
+            >
+              Full Stack Developer
+            </motion.div>
+
+            <motion.p
+              custom={2}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-lg text-[#999999] max-w-2xl mx-auto"
+            >
+              Crafting beautiful, responsive, and user-friendly web applications
+              with modern technologies and best practices.
+            </motion.p>
+          </div>
+
+          {/* Buttons */}
+          <motion.div
+            custom={3}
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <a
+              href="#contact"
+              className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:opacity-90"
+            >
+              Get in Touch
+            </a>
+            <a
+              href="#projects"
+              className="border border-[#00ff9d] text-[#00ff9d] px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-[#00ff9d15]"
+            >
+              View Projects
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
