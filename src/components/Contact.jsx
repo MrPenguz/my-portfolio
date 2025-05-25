@@ -152,9 +152,10 @@ const Contact = () => {
           >
             <ContactInfo
               icon={FaTelegram}
-              text={CONTACT.telegram}
-              href={`https://t.me/${CONTACT.telegram}`}
+              text={`@${CONTACT.telegram}`} // display with @
+              href={`https://t.me/${CONTACT.telegram}`} // link without @
             />
+
             <ContactInfo
               icon={FaPhone}
               text={CONTACT.phoneNo}
@@ -173,7 +174,7 @@ const Contact = () => {
               <div className="flex gap-4">
                 <motion.a
                   whileHover={{ scale: 1.1 }}
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/moe-masri-b7a312324"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full text-black shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
@@ -182,21 +183,12 @@ const Contact = () => {
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1 }}
-                  href="https://github.com"
+                  href="https://github.com/MrPenguz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full text-black shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
                 >
                   <FaGithub className="text-xl" />
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.1 }}
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] p-3 rounded-full text-black shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)] transition-all duration-300 hover:shadow-[0_8px_12px_-1px_rgba(0,255,157,0.3)]"
-                >
-                  <FaTwitter className="text-xl" />
                 </motion.a>
               </div>
             </div>

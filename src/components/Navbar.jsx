@@ -118,9 +118,15 @@ const Navbar = () => {
 
             <div className="hidden md:flex items-center space-x-4">
               {[
-                { icon: <FaLinkedin />, link: 'https://linkedin.com' },
-                { icon: <FaGithub />, link: 'https://github.com' },
-                { icon: <FaTelegram />, link: 'https://t.me/moemmasri' },
+                {
+                  icon: <FaLinkedin />,
+                  link: 'https://www.linkedin.com/in/moe-masri-b7a312324',
+                },
+                {
+                  icon: <FaGithub />,
+                  link: 'https://github.com/MrPenguz',
+                },
+                { icon: <FaTelegram />, link: 'https://t.me/moe_masri' },
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
@@ -189,9 +195,15 @@ const Navbar = () => {
             <div className="px-8 py-6 border-t border-[#222] flex flex-col space-y-4">
               <div className="flex space-x-6 justify-center">
                 {[
-                  { icon: <FaLinkedin />, link: 'https://linkedin.com' },
-                  { icon: <FaGithub />, link: 'https://github.com' },
-                  { icon: <FaTelegram />, link: 'https://t.me/moemmasri' },
+                  {
+                    icon: <FaLinkedin />,
+                    link: 'https://www.linkedin.com/in/moe-masri-b7a312324',
+                  },
+                  {
+                    icon: <FaGithub />,
+                    link: 'https://github.com/MrPenguz',
+                  },
+                  { icon: <FaTelegram />, link: 'https://t.me/moe_masri' },
                 ].map((social, idx) => (
                   <a
                     key={idx}

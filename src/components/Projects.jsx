@@ -43,30 +43,32 @@ const ProjectCard = ({ project, index }) => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href={project.github}
+            href={project.codeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-4 py-3 rounded-lg font-medium no-underline shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)]"
           >
-            <span className=" p-1 rounded-full">
+            <span className="p-1 rounded-full">
               <Github className="text-black w-5 h-5" />
             </span>
             <span>View Code</span>
           </motion.a>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-4 py-3 rounded-lg font-medium no-underline shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)]"
-          >
-            <span className=" p-1 rounded-full">
-              <ExternalLink className="text-black w-5 h-5" />
-            </span>
-            <span>Live Demo</span>
-          </motion.a>
+          {project.liveUrl && (
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] text-black px-4 py-3 rounded-lg font-medium no-underline shadow-[0_4px_6px_-1px_rgba(0,255,157,0.2)]"
+            >
+              <span className="p-1 rounded-full">
+                <ExternalLink className="text-black w-5 h-5" />
+              </span>
+              <span>Live Demo</span>
+            </motion.a>
+          )}
         </div>
       </div>
     </motion.div>
@@ -79,8 +81,8 @@ ProjectCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    github: PropTypes.string.isRequired,
-    live: PropTypes.string.isRequired,
+    codeUrl: PropTypes.string.isRequired,
+    liveUrl: PropTypes.string,
   }).isRequired,
   index: PropTypes.number.isRequired,
 };
