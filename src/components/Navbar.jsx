@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
-import { FaSquareXTwitter } from 'react-icons/fa6';
+import { FaLinkedin, FaGithub, FaTelegram } from 'react-icons/fa';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 
 const sections = ['home', 'about', 'skills', 'projects'];
@@ -60,12 +59,16 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[rgba(10,10,10,0.8)] backdrop-blur-md border-b border-[#333]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-auto">
           {/* Left - Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold bg-gradient-to-r from-[#00ff9d] to-[#00cc7d] bg-clip-text text-transparent cursor-default">
-              Moe Masri
-            </h1>
+            <a href="#home">
+              <img
+                src="/Logo.png"
+                alt="Logo"
+                className="h-20 w-auto  object-contain cursor-pointer"
+              />
+            </a>
           </div>
 
           {/* Middle - Desktop Navigation Links */}
@@ -117,8 +120,7 @@ const Navbar = () => {
               {[
                 { icon: <FaLinkedin />, link: 'https://linkedin.com' },
                 { icon: <FaGithub />, link: 'https://github.com' },
-                { icon: <FaInstagram />, link: 'https://instagram.com' },
-                { icon: <FaSquareXTwitter />, link: 'https://twitter.com' },
+                { icon: <FaTelegram />, link: 'https://t.me/moemmasri' },
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
@@ -189,8 +191,7 @@ const Navbar = () => {
                 {[
                   { icon: <FaLinkedin />, link: 'https://linkedin.com' },
                   { icon: <FaGithub />, link: 'https://github.com' },
-                  { icon: <FaInstagram />, link: 'https://instagram.com' },
-                  { icon: <FaSquareXTwitter />, link: 'https://twitter.com' },
+                  { icon: <FaTelegram />, link: 'https://t.me/moemmasri' },
                 ].map((social, idx) => (
                   <a
                     key={idx}
