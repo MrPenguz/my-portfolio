@@ -5,7 +5,6 @@ import {
   FaEnvelope,
   FaLinkedin,
   FaGithub,
-  FaTwitter,
   FaTelegram,
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
